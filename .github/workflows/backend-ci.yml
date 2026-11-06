@@ -82,6 +82,7 @@ jobs:
             test-durations-
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: test-durations-plan
           path: futureagi/.test_durations
           # .test_durations is a dotfile and upload-artifact@v4 defaults
@@ -225,6 +226,7 @@ jobs:
         if: ${{ !cancelled() && steps.run-shard.conclusion != 'skipped' }}
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: junit-results-${{ matrix.group }}
           path: futureagi/junit-${{ matrix.group }}.xml
           overwrite: true
@@ -234,6 +236,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: timing-data-${{ matrix.group }}
           path: futureagi/.test_durations
           # .test_durations is a dotfile and upload-artifact@v4 defaults

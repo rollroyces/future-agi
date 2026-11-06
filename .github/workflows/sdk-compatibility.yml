@@ -314,6 +314,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: future-agi-sdk-compatibility-reports
           path: |
             futureagi-sdk-test-harness/python-sdk-compliance-report.md
